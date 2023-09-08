@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { TempHumiComponent } from './temp-humi/temp-humi.component';
 import { HttpClient, HttpClientModule  } from '@angular/common/http';
 import { GoogleChartComponent } from './google-chart/google-chart.component';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 @NgModule({
   declarations: [

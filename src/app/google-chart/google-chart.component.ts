@@ -52,7 +52,8 @@ drawLineChart(): void {
   var options = {
     title: 'Humidity over Time',
     curveType: 'function',
-    legend: { position: 'bottom' }
+    legend: { position: 'bottom' },
+
   };
   //ok
   interval(1000)
