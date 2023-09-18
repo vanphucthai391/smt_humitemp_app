@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http'
+import {HttpClient, HttpHeaders} from '@angular/common/http'
 import{TempHumi} from '../shared/temp-humi.model'
 import{ environment} from 'src/environments/environment.development'
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,9 +10,13 @@ import{ environment} from 'src/environments/environment.development'
 export class TempHumiService {
   url:string = environment.apiBaseUrl+'/api/TempAndHumi/th'
   urllist:string = environment.apiBaseUrl+'/api/TempAndHumi'
+  urlgetcb:string = environment.apiBaseUrl+'/api/TempAndHumi/Getcombobox'
+  urlgetprocess:string = environment.apiBaseUrl+'/api/TempAndHumi/Getprocess'
+  urlgetinspect:string = environment.apiBaseUrl+'/api/TempAndHumi/GetInspect'
 
   datath: TempHumi = new TempHumi();
   list: TempHumi[] = [];
+  listgetcb: string[] = [];
 
   constructor(private http: HttpClient) { }
 
@@ -29,5 +34,19 @@ export class TempHumiService {
       error:err=>{console.log(err)}
     })
   }
-
+  Getcb(){
+    this.http.get(this.urlgetcb)
+    .subscribe({
+      next:res=>{this.listgetcb =res as string[]},
+      error:err=>{console.log(err)}
+    })
+  }
+  GetProcess(selectedModel: string){
+    const dataToSend = { model: selectedModel }
+    return this.http.post(this.urlgetprocess, dataToSend);
+  }
+  GetInspect(selectedModel: string,selectedProcess: string){
+    const dataToSend = { model: selectedModel,process: selectedProcess}
+    return this.http.post(this.urlgetinspect, dataToSend);
+  }
 }

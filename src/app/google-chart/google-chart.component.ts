@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TempHumiService } from '../shared/temp-humi.service';
 import { interval } from 'rxjs';
 import {TempHumi}  from '../shared/temp-humi.model';
+
 declare var google: any; // Khai báo biến global cho Google Charts
 @Component({
   selector: 'app-google-chart',
