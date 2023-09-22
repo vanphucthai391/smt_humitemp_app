@@ -1,11 +1,12 @@
 import {AfterViewInit, Component ,OnInit,ViewChild} from '@angular/core';
 import { TempHumiService } from '../shared/temp-humi.service';
-import {NgForm} from '@angular/forms';
+import {FormControl, NgForm, Validators} from '@angular/forms';
 import { DataReceive } from '../shared/data-receive.model';
 import {LiveAnnouncer} from '@angular/cdk/a11y';
 import {MatSort, Sort, MatSortModule, MatSortable} from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { SpinnerService } from '../shared/spinner.service'; 
+import {ErrorStateMatcher} from '@angular/material/core';
 
 @Component({
   selector: 'app-combobox',
@@ -24,6 +25,9 @@ export class ComboboxComponent implements OnInit,AfterViewInit {
   displayedColumns: string[] = ['serno', 'lot', 'inspectdate', 'inspectdata','judge'];
   dataSource = new MatTableDataSource<DataReceive>([]); // Initialize with an empty array
   @ViewChild(MatSort) sort!: MatSort;
+  modelControl = new FormControl('', [Validators.required]);
+  processControl = new FormControl('', [Validators.required]);
+  inspectControl = new FormControl('', [Validators.required]);
 
 ngOnInit(): void {
   this.service.Getcb();

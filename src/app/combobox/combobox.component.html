@@ -7,7 +7,7 @@
     <button type="submit">submit</button>&nbsp;<button type="reset">Reset</button>
 </form> -->
 
-<form  #form ="ngForm" (submit)="onsubmit(form)" class="demo-form"> 
+<form  #form ="ngForm" (submit)="onsubmit(form)" class="demo-form" > 
   <mat-form-field class="demo-form-field">
     <mat-label>Enter a date range</mat-label>
     <mat-date-range-input [rangePicker]="picker">
@@ -20,29 +20,32 @@
   </mat-form-field>
   <mat-form-field>
     <mat-label>Select Model</mat-label>
-    <mat-select name="model" #model="ngModel" [(ngModel)]="service.formdata.model" (ngModelChange)="onDropModelChange($event)">
-      <mat-option *ngFor="let th of service.listgetcb" [value]="th">{{th}}</mat-option>
+    <mat-select [formControl]="modelControl" required name="model"  [(ngModel)]="service.formdata.model" (ngModelChange)="onDropModelChange($event)">
+      <mat-option *ngFor="let th of service.listgetcb" [value]="th" >{{th}}</mat-option>
     </mat-select>
+    <mat-error *ngIf="modelControl.hasError('required')">Model is required</mat-error>
   </mat-form-field>
   
   <mat-form-field>
     <mat-label>Select Process</mat-label>
-    <mat-select name="process" #process="ngModel" [(ngModel)]="service.formdata.process" (ngModelChange)="onDropProcessChange($event)" >
+    <mat-select [formControl]="processControl" required name="process" [(ngModel)]="service.formdata.process" (ngModelChange)="onDropProcessChange($event)" >
       <mat-option *ngFor="let th of listProcess" [value]="th">{{th}}</mat-option>
     </mat-select>
+    <mat-error *ngIf="processControl.hasError('required')">Process is required</mat-error>
+
   </mat-form-field>
   
   <mat-form-field>
     <mat-label>Select Inspect</mat-label>
-    <mat-select  name="inspect" #inspect="ngModel" [(ngModel)]="service.formdata.inspect">
+    <mat-select [formControl]="inspectControl" required name="inspect" [(ngModel)]="service.formdata.inspect">
       <mat-option *ngFor="let th of listInspect" [value]="th">{{th}}</mat-option>
     </mat-select>
+    <mat-error *ngIf="inspectControl.hasError('required')">Inspect is required</mat-error>
   </mat-form-field>
-  <button type="submit" mat-button >Submit</button> 
+  <button type="submit" mat-stroked-button [disabled]="form.invalid">Submit</button> 
 </form>
 <div *ngIf="spinnerService.isVisible()" class="overlay">
   <mat-progress-spinner  mode="indeterminate" diameter="50"></mat-progress-spinner>
-
 </div>
 
 <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)" class="mat-elevation-z8">

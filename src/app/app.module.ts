@@ -7,7 +7,7 @@ import { HttpClient, HttpClientModule  } from '@angular/common/http';
 import { GoogleChartComponent } from './google-chart/google-chart.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ComboboxComponent } from './combobox/combobox.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -18,6 +18,8 @@ import {MatTableModule} from '@angular/material/table';
 import {MatSort, Sort, MatSortModule} from '@angular/material/sort';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatButtonModule} from '@angular/material/button';
+import {NgFor, NgIf} from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,11 @@ import {MatDialogModule} from '@angular/material/dialog';
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,MatFormFieldModule, MatDatepickerModule, MatNativeDateModule,MatInputModule,
-    MatSelectModule,MatTableModule,MatSortModule,MatProgressSpinnerModule, MatDialogModule
+    MatSelectModule,MatTableModule,MatSortModule,MatProgressSpinnerModule, MatDialogModule,MatButtonModule,
+    FormsModule,ReactiveFormsModule,ReactiveFormsModule,
+    NgFor,
+    NgIf
+
   ],
   providers: [],
   bootstrap: [AppComponent]
