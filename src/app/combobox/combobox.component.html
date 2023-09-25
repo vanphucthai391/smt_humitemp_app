@@ -20,27 +20,24 @@
   </mat-form-field>
   <mat-form-field>
     <mat-label>Select Model</mat-label>
-    <mat-select [formControl]="modelControl" required name="model"  [(ngModel)]="service.formdata.model" (ngModelChange)="onDropModelChange($event)">
+    <mat-select required name="model"  [(ngModel)]="service.formdata.model" (ngModelChange)="onDropModelChange($event)">
       <mat-option *ngFor="let th of service.listgetcb" [value]="th" >{{th}}</mat-option>
     </mat-select>
-    <mat-error *ngIf="modelControl.hasError('required')">Model is required</mat-error>
   </mat-form-field>
   
   <mat-form-field>
     <mat-label>Select Process</mat-label>
-    <mat-select [formControl]="processControl" required name="process" [(ngModel)]="service.formdata.process" (ngModelChange)="onDropProcessChange($event)" >
+    <mat-select required name="process" [(ngModel)]="service.formdata.process" (ngModelChange)="onDropProcessChange($event)" >
       <mat-option *ngFor="let th of listProcess" [value]="th">{{th}}</mat-option>
     </mat-select>
-    <mat-error *ngIf="processControl.hasError('required')">Process is required</mat-error>
 
   </mat-form-field>
   
   <mat-form-field>
     <mat-label>Select Inspect</mat-label>
-    <mat-select [formControl]="inspectControl" required name="inspect" [(ngModel)]="service.formdata.inspect">
+    <mat-select  required name="inspect" [(ngModel)]="service.formdata.inspect">
       <mat-option *ngFor="let th of listInspect" [value]="th">{{th}}</mat-option>
     </mat-select>
-    <mat-error *ngIf="inspectControl.hasError('required')">Inspect is required</mat-error>
   </mat-form-field>
   <button type="submit" mat-stroked-button [disabled]="form.invalid">Submit</button> 
 </form>

@@ -25,9 +25,6 @@ export class ComboboxComponent implements OnInit,AfterViewInit {
   displayedColumns: string[] = ['serno', 'lot', 'inspectdate', 'inspectdata','judge'];
   dataSource = new MatTableDataSource<DataReceive>([]); // Initialize with an empty array
   @ViewChild(MatSort) sort!: MatSort;
-  modelControl = new FormControl('', [Validators.required]);
-  processControl = new FormControl('', [Validators.required]);
-  inspectControl = new FormControl('', [Validators.required]);
 
 ngOnInit(): void {
   this.service.Getcb();
